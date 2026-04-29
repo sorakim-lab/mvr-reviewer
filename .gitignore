@@ -216,3 +216,8 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+private/
+*_real.docx
+*_internal.docx
+*_confidential.docx
