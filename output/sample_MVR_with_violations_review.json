@@ -1,0 +1,183 @@
+{
+  "metadata": {
+    "document": "sample_MVR_with_violations.docx",
+    "reviewed_at": "2026-04-29T02:18:16",
+    "total_violations": 21,
+    "by_severity": {
+      "required": 16,
+      "recommended": 2,
+      "info": 3
+    },
+    "rules_triggered": 16
+  },
+  "violations": [
+    {
+      "rule_id": "RULE-MVR-001",
+      "rule_name": "허용기준 띄어쓰기",
+      "severity": "required",
+      "location": "본문 단락 5",
+      "message": "\"허용 기준\" → \"허용기준\" (띄어쓰기 없이 통일)",
+      "matched_text": "허용 기준"
+    },
+    {
+      "rule_id": "RULE-MVR-001",
+      "rule_name": "허용기준 띄어쓰기",
+      "severity": "required",
+      "location": "본문 단락 5",
+      "message": "\"허용 기준\" → \"허용기준\" (띄어쓰기 없이 통일)",
+      "matched_text": "허용 기준"
+    },
+    {
+      "rule_id": "RULE-MVR-001",
+      "rule_name": "허용기준 띄어쓰기",
+      "severity": "required",
+      "location": "본문 단락 12",
+      "message": "\"허용 기준\" → \"허용기준\" (띄어쓰기 없이 통일)",
+      "matched_text": "허용 기준"
+    },
+    {
+      "rule_id": "RULE-MVR-001",
+      "rule_name": "허용기준 띄어쓰기",
+      "severity": "required",
+      "location": "본문 단락 41",
+      "message": "\"허용 기준\" → \"허용기준\" (띄어쓰기 없이 통일)",
+      "matched_text": "허용 기준"
+    },
+    {
+      "rule_id": "RULE-MVR-002",
+      "rule_name": "검교정 컬럼 삭제 확인",
+      "severity": "required",
+      "location": "표 5 헤더",
+      "message": "\"검교정 일자\" 컬럼은 삭제 대상. \"차기\" 컬럼만 남김",
+      "matched_text": "검교정 일자"
+    },
+    {
+      "rule_id": "RULE-MVR-003",
+      "rule_name": "차기 일자 영문 표기",
+      "severity": "required",
+      "location": "표 5 헤더",
+      "message": "\"차기 일자\" 옆에 영문 \"Next date of Calibration or Qualification\" 병기 필요",
+      "matched_text": "차기 일자"
+    },
+    {
+      "rule_id": "RULE-MVR-102",
+      "rule_name": "표 2 헤더 통일",
+      "severity": "required",
+      "location": "표 2 헤더",
+      "message": "표 2 헤더는 \"Identification / Characteristics(s) / Type / Selection\". \"Test\" 포함 금지",
+      "matched_text": "금지어 \"Test\" 포함: Test | Characteristics | Type | Selection"
+    },
+    {
+      "rule_id": "RULE-MVR-102",
+      "rule_name": "표 2 헤더 통일",
+      "severity": "required",
+      "location": "표 2 헤더",
+      "message": "표 2 헤더는 \"Identification / Characteristics(s) / Type / Selection\". \"Test\" 포함 금지",
+      "matched_text": "누락 헤더: ['Identification'] / 현재: Test | Characteristics | Type | Selection"
+    },
+    {
+      "rule_id": "RULE-MVR-103",
+      "rule_name": "표 24 헤더 통일",
+      "severity": "required",
+      "location": "표 24",
+      "message": "표 24을(를) 찾지 못함",
+      "matched_text": ""
+    },
+    {
+      "rule_id": "RULE-MVR-104",
+      "rule_name": "분석순서 표 헤더",
+      "severity": "required",
+      "location": "본문 단락 6",
+      "message": "분석순서 표 헤더는 \"Parameters\" (Validation Item 아님)",
+      "matched_text": "Validation Item"
+    },
+    {
+      "rule_id": "RULE-MVR-104",
+      "rule_name": "분석순서 표 헤더",
+      "severity": "required",
+      "location": "표 3 헤더",
+      "message": "분석순서 표 헤더는 \"Parameters\" (Validation Item 아님)",
+      "matched_text": "Validation Item"
+    },
+    {
+      "rule_id": "RULE-MVR-105",
+      "rule_name": "표 캡션 영문 병기",
+      "severity": "recommended",
+      "location": "본문 단락 13",
+      "message": "표 1 제외 모든 표 캡션은 영문 병기 필요 (예: '표 N. 한글명 / English caption')",
+      "matched_text": "표 3. 분석순서"
+    },
+    {
+      "rule_id": "RULE-MVR-201",
+      "rule_name": "콜론 정의 단락 — CE",
+      "severity": "required",
+      "location": "전역",
+      "message": "CE 약어 사용 시 영문 풀어 쓴 정의 단락 필요",
+      "matched_text": "\"CE\" 사용되나 \"Capillary Electrophoresis\" 정의 없음"
+    },
+    {
+      "rule_id": "RULE-MVR-202",
+      "rule_name": "콜론 정의 단락 — CPA",
+      "severity": "required",
+      "location": "전역",
+      "message": "CPA 약어 사용 시 영문 풀어 쓴 정의 단락 필요",
+      "matched_text": "\"CPA\" 사용되나 풀네임 정의 없음"
+    },
+    {
+      "rule_id": "RULE-MVR-203",
+      "rule_name": "콜론 정의 단락 — LMW",
+      "severity": "required",
+      "location": "전역",
+      "message": "LMW 약어 사용 시 영문 풀어 쓴 정의 단락 필요",
+      "matched_text": "\"LMW\" 사용되나 \"Low Molecular Weight\" 정의 없음"
+    },
+    {
+      "rule_id": "RULE-MVR-204",
+      "rule_name": "Revision History 존재",
+      "severity": "required",
+      "location": "전역",
+      "message": "Revision History 섹션 누락",
+      "matched_text": "검색 키워드: ['Revision History', '개정 이력', '개정이력']"
+    },
+    {
+      "rule_id": "RULE-MVR-205",
+      "rule_name": "서명란 존재",
+      "severity": "required",
+      "location": "전역",
+      "message": "서명란 (작성/검토/승인) 누락",
+      "matched_text": "검색 키워드: ['Prepared by', 'Reviewed by', 'Approved by', '작성자', '검토자', '승인자']"
+    },
+    {
+      "rule_id": "RULE-MVR-301",
+      "rule_name": "본문 폰트 크기",
+      "severity": "recommended",
+      "location": "본문 (36개 단락)",
+      "message": "본문 폰트 크기는 11pt",
+      "matched_text": "발견: 12.0pt (기대: 11pt)"
+    },
+    {
+      "rule_id": "RULE-MVR-302",
+      "rule_name": "행간 1.15",
+      "severity": "info",
+      "location": "전역",
+      "message": "[수동확인] 행간은 1.15",
+      "matched_text": ""
+    },
+    {
+      "rule_id": "RULE-MVR-303",
+      "rule_name": "단락 간격 0",
+      "severity": "info",
+      "location": "전역",
+      "message": "[수동확인] 단락 앞/뒤 간격은 0pt",
+      "matched_text": ""
+    },
+    {
+      "rule_id": "RULE-MVR-304",
+      "rule_name": "표 본문 가운데 정렬",
+      "severity": "info",
+      "location": "전역",
+      "message": "[수동확인] 표 안 텍스트는 가운데 정렬",
+      "matched_text": ""
+    }
+  ]
+}
