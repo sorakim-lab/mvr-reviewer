@@ -1,0 +1,45 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+.eggs/
+build/
+dist/
+
+# 가상환경
+.venv/
+venv/
+env/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# Jupyter
+.ipynb_checkpoints/
+
+# 테스트/커버리지
+.pytest_cache/
+.coverage
+htmlcov/
+
+# 환경변수 (혹시 API 키 같은 거 쓰게 될 때)
+.env
+.env.local
+
+# 임시 작업 파일
+*.tmp
+*.bak
+~$*
+
+# 회사 실제 문서 — 절대 커밋 X
+private/
+*_real.docx
+*_internal.docx
