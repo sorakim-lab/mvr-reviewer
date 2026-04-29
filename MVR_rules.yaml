@@ -1,0 +1,242 @@
+# MVR (Method Validation Report) 룰셋
+# 마지막 업데이트: 2026-04-29
+# 작성: 소라
+#
+# 룰 ID 체계:
+#   RULE-MVR-0XX : 용어/표기 통일 (terminology)
+#   RULE-MVR-1XX : 표 헤더 (table)
+#   RULE-MVR-2XX : 필수 섹션/항목 (required_field)
+#   RULE-MVR-3XX : 서식 (format)
+#   RULE-MVR-4XX : 상호 참조 (cross_reference)
+
+rules:
+
+  # ============================================================
+  # 0XX : 용어/표기 통일
+  # ============================================================
+
+  - id: RULE-MVR-001
+    name: 허용기준 띄어쓰기
+    category: terminology
+    severity: required
+    check_type: regex_replace
+    pattern: "허용 기준"
+    replacement: "허용기준"
+    message: '"허용 기준" → "허용기준" (띄어쓰기 없이 통일)'
+    rationale: 사내 MVR 표준 표기
+    example_wrong: "허용 기준에 따라 시험을 수행한다"
+    example_right: "허용기준에 따라 시험을 수행한다"
+
+  - id: RULE-MVR-002
+    name: 검교정 컬럼 삭제 확인
+    category: terminology
+    severity: required
+    check_type: regex_find
+    pattern: "검교정\\s*일자"
+    forbidden: true
+    message: '"검교정 일자" 컬럼은 삭제 대상. "차기" 컬럼만 남김'
+    rationale: 사내 MVR 표 양식 v2026 변경사항
+
+  - id: RULE-MVR-003
+    name: 차기 일자 영문 표기
+    category: terminology
+    severity: required
+    check_type: regex_find
+    pattern: "차기\\s*일자(?!\\s*\\(?\\s*Next)"
+    forbidden: true
+    message: '"차기 일자" 옆에 영문 "Next date of Calibration or Qualification" 병기 필요'
+    rationale: bilingual 표기 표준
+
+  # ============================================================
+  # 1XX : 표 헤더
+  # ============================================================
+
+  - id: RULE-MVR-101
+    name: 표 1 영문 캡션 제외
+    category: table
+    severity: recommended
+    check_type: table_header
+    table_index: 1
+    language: ko
+    forbidden_keywords: []
+    message: "표 1은 영문 캡션 없이 한글만 (Bioassay와 동일 처리)"
+    rationale: 표 1은 관행상 영문 캡션 미부착
+
+  - id: RULE-MVR-102
+    name: 표 2 헤더 통일
+    category: table
+    severity: required
+    check_type: table_header
+    table_index: 2
+    expected_headers:
+      - "Identification"
+      - "Characteristics"
+      - "Type"
+      - "Selection"
+    forbidden_keywords:
+      - "Test"
+    message: '표 2 헤더는 "Identification / Characteristics(s) / Type / Selection". "Test" 포함 금지'
+    rationale: 사내 표준 표 양식
+
+  - id: RULE-MVR-103
+    name: 표 24 헤더 통일
+    category: table
+    severity: required
+    check_type: table_header
+    table_index: 24
+    expected_headers:
+      - "Parameters"
+      - "Acceptance Criteria"
+      - "Formula"
+    language: en
+    message: "표 24 헤더는 영문만 (Parameters / Acceptance Criteria / Formula). 한글 병기 X"
+    rationale: 사내 표준 — 수식 포함 표는 영문 통일
+
+  - id: RULE-MVR-104
+    name: 분석순서 표 헤더
+    category: table
+    severity: required
+    check_type: regex_find
+    pattern: "Validation\\s*Item"
+    forbidden: true
+    message: '분석순서 표 헤더는 "Parameters" (Validation Item 아님)'
+    rationale: 표 헤더 용어 통일
+
+  - id: RULE-MVR-105
+    name: 표 캡션 영문 병기
+    category: table
+    severity: recommended
+    check_type: regex_find
+    pattern: "^표\\s*\\d+\\.\\s*[가-힣]+$"
+    forbidden: true
+    message: "표 1 제외 모든 표 캡션은 영문 병기 필요 (예: '표 N. 한글명 / English caption')"
+    rationale: bilingual 캡션 표준
+
+  # ============================================================
+  # 2XX : 필수 섹션/항목
+  # ============================================================
+
+  - id: RULE-MVR-201
+    name: 콜론 정의 단락 — CE
+    category: required_field
+    severity: required
+    check_type: required_section
+    section_name: "CE 정의 단락"
+    keywords:
+      - "CE"
+      - "Capillary Electrophoresis"
+    message: "CE 약어 사용 시 영문 풀어 쓴 정의 단락 필요"
+    rationale: 약어 첫 등장 시 풀네임 병기
+
+  - id: RULE-MVR-202
+    name: 콜론 정의 단락 — CPA
+    category: required_field
+    severity: required
+    check_type: required_section
+    section_name: "CPA 정의 단락"
+    keywords:
+      - "CPA"
+    message: "CPA 약어 사용 시 영문 풀어 쓴 정의 단락 필요"
+    rationale: 약어 첫 등장 시 풀네임 병기
+
+  - id: RULE-MVR-203
+    name: 콜론 정의 단락 — LMW
+    category: required_field
+    severity: required
+    check_type: required_section
+    section_name: "LMW 정의 단락"
+    keywords:
+      - "LMW"
+      - "Low Molecular Weight"
+    message: "LMW 약어 사용 시 영문 풀어 쓴 정의 단락 필요"
+    rationale: 약어 첫 등장 시 풀네임 병기
+
+  - id: RULE-MVR-204
+    name: Revision History 존재
+    category: required_field
+    severity: required
+    check_type: required_section
+    section_name: "Revision History"
+    keywords:
+      - "Revision History"
+      - "개정 이력"
+      - "개정이력"
+    message: "Revision History 섹션 누락"
+    rationale: 모든 MVR은 개정 이력 필수
+
+  - id: RULE-MVR-205
+    name: 서명란 존재
+    category: required_field
+    severity: required
+    check_type: required_section
+    section_name: "서명란"
+    keywords:
+      - "Prepared by"
+      - "Reviewed by"
+      - "Approved by"
+      - "작성자"
+      - "검토자"
+      - "승인자"
+    message: "서명란 (작성/검토/승인) 누락"
+    rationale: GMP 문서 필수 요소
+
+  # ============================================================
+  # 3XX : 서식
+  # ============================================================
+
+  - id: RULE-MVR-301
+    name: 본문 폰트 크기
+    category: format
+    severity: recommended
+    check_type: format_check
+    target: font_size
+    expected_value: 11
+    scope: body
+    message: "본문 폰트 크기는 11pt"
+    rationale: 사내 MVR 표준 서식
+
+  - id: RULE-MVR-302
+    name: 행간 1.15
+    category: format
+    severity: recommended
+    check_type: format_check
+    target: line_spacing
+    expected_value: 1.15
+    message: "행간은 1.15"
+    rationale: 사내 MVR 표준 서식
+
+  - id: RULE-MVR-303
+    name: 단락 간격 0
+    category: format
+    severity: recommended
+    check_type: format_check
+    target: paragraph_spacing
+    expected_value: 0
+    message: "단락 앞/뒤 간격은 0pt"
+    rationale: 사내 MVR 표준 서식
+
+  - id: RULE-MVR-304
+    name: 표 본문 가운데 정렬
+    category: format
+    severity: recommended
+    check_type: format_check
+    target: alignment
+    expected_value: center
+    scope: table_body
+    message: "표 안 텍스트는 가운데 정렬"
+    rationale: 사내 MVR 표준 서식
+
+  # ============================================================
+  # 4XX : 상호 참조 (v2 — 일단 placeholder)
+  # ============================================================
+
+  - id: RULE-MVR-401
+    name: 본문 표 참조 일치
+    category: cross_reference
+    severity: info
+    check_type: regex_find
+    pattern: "표\\s*\\d+"
+    forbidden: false
+    message: "본문에 언급된 표 번호가 실제 존재하는지 확인 필요 (수동 확인)"
+    rationale: 자동 검증은 v2에서 구현
+    enabled: false  # v2에서 켜기
